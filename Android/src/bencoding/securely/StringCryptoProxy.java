@@ -74,6 +74,28 @@ public class StringCryptoProxy  extends KrollProxy {
 			return null;			
 		}
 	}
+	@Kroll.method
+	public String BlowfishEncrypt(String key, String value) {
+		try {			
+			String EncryptedText = BlowfishCrypt.encrypt(key, value);
+			return EncryptedText;
+		} catch (Exception e) {
+			e.printStackTrace();
+			LogHelpers.Log(e);
+			return null;			
+		}		
+	}
+	@Kroll.method
+	public String BlowfishDecrypt(String key, String value) {		
+		try {
+			String ClearText =  BlowfishCrypt.decrypt(key, value);
+			return ClearText;
+		} catch (Exception e) {
+			e.printStackTrace();
+			LogHelpers.Log(e);
+			return null;			
+		}
+	}
 	
 	@Kroll.method
     public String toHex(String txt) {
